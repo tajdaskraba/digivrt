@@ -2,15 +2,15 @@
   "name": "digivrt",
   "main": "expo-router/entry",
   "version": "1.0.0",
-  "scripts": {
-    "start": "expo start",
-    "reset-project": "node ./scripts/reset-project.js",
-    "android": "DARK_MODE=media expo start --android",
-    "ios": "DARK_MODE=media expo start --ios",
-    "web": "DARK_MODE=media expo start --web",
-    "test": "jest --watchAll",
-    "lint": "expo lint"
-  },
+"scripts": {
+  "start": "cd frontend && expo start",
+  "reset-project": "node ./frontend/scripts/reset-project.js",
+  "android": "cd frontend && DARK_MODE=media expo start --android",
+  "ios": "cd frontend && DARK_MODE=media expo start --ios",
+  "web": "cd frontend && DARK_MODE=media expo start --web",
+  "test": "cd frontend && jest --watchAll",
+  "lint": "cd frontend && expo lint"
+},
   "jest": {
     "preset": "jest-expo"
   },

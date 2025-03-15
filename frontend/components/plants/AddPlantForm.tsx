@@ -55,7 +55,6 @@ export default function AddPlantForm({ visible, onClose }: AddPlantFormProps) {
   };
 
   const handleImagePress = () => {
-    console.log("image pressed");
     takePhoto();
   };
 
