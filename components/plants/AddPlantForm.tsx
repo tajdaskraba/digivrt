@@ -1,6 +1,6 @@
 import { StyleSheet, TextInput, Alert, TouchableOpacity, ScrollView, Modal } from 'react-native';
-import { useState } from 'react';
 import * as ImagePicker from 'expo-image-picker';
+import { useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
@@ -43,22 +43,7 @@ export default function AddPlantForm({ visible, onClose }: AddPlantFormProps) {
     if (!(await requestPermissions())) return;
 
     const result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 0.8,
-    });
-
-    if (!result.canceled && result.assets && result.assets[0]?.uri) {
-      setSelectedImage(result.assets[0].uri);
-    }
-  };
-
-  const pickImage = async () => {
-    if (!(await requestPermissions())) return;
-
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      mediaTypes: ['images'],
       allowsEditing: true,
       aspect: [4, 3],
       quality: 0.8,
@@ -70,15 +55,8 @@ export default function AddPlantForm({ visible, onClose }: AddPlantFormProps) {
   };
 
   const handleImagePress = () => {
-    Alert.alert(
-      'Naloži fotografijo',
-      'Izberi med opcijami',
-      [
-        { text: 'Posnami fotografijo', onPress: takePhoto },
-        { text: 'Izberi iz galerije', onPress: pickImage },
-        { text: 'Prekliči', style: 'cancel' },
-      ]
-    );
+    console.log("image pressed");
+    takePhoto();
   };
 
   return (
