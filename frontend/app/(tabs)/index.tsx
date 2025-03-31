@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, View, FlatList } from 'react-native';
+import { Dimensions, Image, StyleSheet, View, FlatList } from 'react-native';
 import { DigiVrtAnimation } from '@/components/DigiVrtAnimation';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Pressable } from '@/components/ui/pressable';
+
+const screenWidth = Dimensions.get('window').width;
 
 const componentImages: Record<string, any> = {
   USB1: require('@/assets/images/PCB/PCB-USB1.png'),
@@ -116,13 +118,14 @@ const styles = StyleSheet.create({
   },
   imageWrapper: {
     paddingTop: 8,
-    width: 330,
+    width: 300,
     alignItems: 'center',
-    marginVertical: 16,
+    marginTop: 16,
+    marginBottom: 8,
   },
   image: {
-    width: 330,
-    height: 330,
+    width: 300,
+    height: 300,
     resizeMode: 'contain',
   },
   textContainer: {

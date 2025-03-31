@@ -2,15 +2,15 @@
   "name": "digivrt",
   "main": "expo-router/entry",
   "version": "1.0.0",
-"scripts": {
-  "start": "cd frontend && expo start",
-  "reset-project": "node ./frontend/scripts/reset-project.js",
-  "android": "cd frontend && DARK_MODE=media expo start --android",
-  "ios": "cd frontend && DARK_MODE=media expo start --ios",
-  "web": "cd frontend && DARK_MODE=media expo start --web",
-  "test": "cd frontend && jest --watchAll",
-  "lint": "cd frontend && expo lint"
-},
+  "scripts": {
+    "start": "cd frontend && expo start",
+    "reset-project": "node ./frontend/scripts/reset-project.js",
+    "android": "cd frontend && DARK_MODE=media expo start --android",
+    "ios": "cd frontend && DARK_MODE=media expo start --ios",
+    "web": "cd frontend && DARK_MODE=media expo start --web",
+    "test": "cd frontend && jest --watchAll",
+    "lint": "cd frontend && expo lint"
+  },
   "jest": {
     "preset": "jest-expo"
   },
@@ -53,12 +53,13 @@
     "react-native-image-picker": "^8.1.0",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-reanimated": "~3.16.1",
-    "react-native-safe-area-context": "^4.12.0",
+    "react-native-safe-area-context": "4.12.0",
     "react-native-screens": "~4.4.0",
-    "react-native-svg": "^15.8.0",
+    "react-native-svg": "15.8.0",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "@react-native-async-storage/async-storage": "1.23.1"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
