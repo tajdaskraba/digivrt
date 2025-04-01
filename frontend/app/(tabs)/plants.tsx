@@ -27,10 +27,10 @@ export default function PlantsTab() {
         isDisabled={false}
         isPressed={false}
         onPress={handleAddPlant}
-        style={[styles.plus, { marginBottom: tabBarHeight + 16 }]}
+        style={[styles.fab, { marginBottom: tabBarHeight + 16 }]}
       >
-        <FabIcon as={AddIcon} />
-        <FabLabel>Dodaj rastlino</FabLabel>
+        <FabIcon style={styles.fabIcon} as={AddIcon} />
+        <FabLabel style={styles.fabLabel}>Dodaj rastlino</FabLabel>
       </Fab>
 
       {showAddPlant && (
@@ -53,9 +53,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  plus: {
+  fab: {
+    backgroundColor: 'transparent',
     position: 'absolute',
     right: 20,
     bottom: 20,
+    borderWidth: 2,
+    borderColor: 'white',
+    borderRadius: 9999,
+  },
+  fabLabel: {
+      color: 'white',
+      fontSize: 16,
+      fontWeight: 'bold',
+  },
+  fabIcon: {
+    color: 'white',
+    fontSize: 24,
   }
 });
