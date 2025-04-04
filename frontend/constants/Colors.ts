@@ -1,26 +1,157 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
 export const Colors = {
   light: {
     text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
+    background: '#FFFFFF',
+    tint: '#007A5A',
+    icon: '#60E686',
+    border: '#E0E0E0',
+ 
+    green: {
+      100: '#C4F4D1',
+      200: '#A7F1BC',
+      300: '#7CEA9C',
+      400: '#60E686',
+      500: '#007A5A',
+    },
+
+    yellow: {
+      100: '#FFDD7F',
+      200: '#FFCE47',
+      300: '#FFBC0A',
+      400: '#E0A500',
+      500: '#A87D00',
+    },
+
+    orange: {
+      100: '#FFAC86',
+      200: '#F47E52',
+      300: '#F26430',
+      400: '#E6480F',
+      500: '#B03000',
+    },
+
+    red: {
+      100: '#FF5E5E',
+      200: '#EA3939',
+      300: '#D60404',
+      400: '#B10000',
+      500: '#800000',
+    },
+
+    pink: {
+      100: '#FF8BAE',
+      200: '#FF5C8D',
+      300: '#FF1F62',
+      400: '#E00043',
+      500: '#B00030',
+    },
+
+    purple: {
+      100: '#AFABE3',
+      200: '#8D89BE',
+      300: '#6761A8',
+      400: '#555091',
+      500: '#3A3A6A',
+    },
+
+    blue: {
+      100: '#6FD3FA',
+      200: '#0ABAFF',
+      300: '#009DDC',
+      400: '#0084B8',
+      500: '#006690',
+    },
+
+    black: '#000000',
+    white: '#FFFFFF',
+    gray: {
+      100: '#B3B3B3',
+      200: '#8C8C8C',
+      300: '#666666',
+      400: '#404040',
+      500: '#1E1E1E',
+    },
+
+    success: '#60E686',
+    warning: '#E0A500',
+    error: '#B10000',
   },
+
   dark: {
     text: '#ECEDEE',
     background: '#151718',
-    tint: tintColorDark,
+    tint: '#ffffff',
     icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
+    border: '#424242',
+
+    green: {
+      100: '#10F0B5',
+      200: '#00CC96',
+      300: '#009B72',
+      400: '#007A5A',
+      500: '#005A42',
+    },
+
+    yellow: {
+      100: '#FFDD7F',
+      200: '#FFCE47',
+      300: '#FFBC0A',
+      400: '#E0A500',
+      500: '#A87D00',
+    },
+
+    orange: {
+      100: '#FFAC86',
+      200: '#F47E52',
+      300: '#F26430',
+      400: '#E6480F',
+      500: '#B03000',
+    },
+
+    red: {
+      100: '#FF5E5E',
+      200: '#EA3939',
+      300: '#D60404',
+      400: '#B10000',
+      500: '#800000',
+    },
+
+    pink: {
+      100: '#FF8BAE',
+      200: '#FF5C8D',
+      300: '#FF1F62',
+      400: '#E00043',
+      500: '#B00030',
+    },
+
+    purple: {
+      100: '#AFABE3',
+      200: '#8D89BE',
+      300: '#6761A8',
+      400: '#555091',
+      500: '#3A3A6A',
+    },
+
+    blue: {
+      100: '#6FD3FA',
+      200: '#0ABAFF',
+      300: '#009DDC',
+      400: '#0084B8',
+      500: '#006690',
+    },
+
+    black: '#000000',
+    white: '#FFFFFF',
+    gray: {
+      100: '#B3B3B3',
+      200: '#8C8C8C',
+      300: '#666666',
+      400: '#404040',
+      500: '#1E1E1E',
+    },
+
+    success: '#00CC96',
+    warning: '#FFCE47',
+    error: '#EA3939',
   },
 };

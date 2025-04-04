@@ -6,10 +6,14 @@ import { AddIcon } from "@/components/ui/icon";
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { useThemeColor } from '@/hooks/useThemeColor';
 
 export default function PlantsTab() {
   const [showAddPlant, setShowAddPlant] = useState(false);
   const tabBarHeight = useBottomTabBarHeight();
+
+  const iconColor = useThemeColor({ light: 'black', dark: 'white' }, 'text');
+  const resolvedIconColor = typeof iconColor === 'string' ? iconColor : iconColor[500];
 
   const handleAddPlant = () => {
     setShowAddPlant(true);
@@ -27,10 +31,14 @@ export default function PlantsTab() {
         isDisabled={false}
         isPressed={false}
         onPress={handleAddPlant}
-        style={[styles.fab, { marginBottom: tabBarHeight + 16 }]}
+        style={[styles.fab, { marginBottom: tabBarHeight + 16 }, { borderColor: resolvedIconColor }]}
       >
-        <FabIcon style={styles.fabIcon} as={AddIcon} />
-        <FabLabel style={styles.fabLabel}>Dodaj rastlino</FabLabel>
+        <FabIcon style={[styles.fabIcon, { color: resolvedIconColor }]} as={AddIcon} />
+        <FabLabel style={styles.fabLabel}>
+          <ThemedText>
+            Dodaj rastlino
+          </ThemedText>
+        </FabLabel>
       </Fab>
 
       {showAddPlant && (
@@ -59,16 +67,14 @@ const styles = StyleSheet.create({
     right: 20,
     bottom: 20,
     borderWidth: 2,
-    borderColor: 'white',
     borderRadius: 9999,
   },
   fabLabel: {
-      color: 'white',
-      fontSize: 16,
-      fontWeight: 'bold',
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   fabIcon: {
-    color: 'white',
     fontSize: 24,
   }
 });

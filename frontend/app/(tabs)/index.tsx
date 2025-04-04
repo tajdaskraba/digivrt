@@ -4,22 +4,40 @@ import { DigiVrtAnimation } from '@/components/DigiVrtAnimation';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Pressable } from '@/components/ui/pressable';
+import { useAppTheme } from '@/context/theme-context';
 
 const screenWidth = Dimensions.get('window').width;
 
-const componentImages: Record<string, any> = {
-  USB1: require('@/assets/images/PCB/PCB-USB1.png'),
-  P1: require('@/assets/images/PCB/PCB-P1.png'),
-  U1: require('@/assets/images/PCB/PCB-U1.png'),
-  ENABLE: require('@/assets/images/PCB/PCB-ENABLE.png'),
-  BOOT: require('@/assets/images/PCB/PCB-BOOT.png'),
-  U3: require('@/assets/images/PCB/PCB-U3.png'),
-  I2C: require('@/assets/images/PCB/PCB-I2C.png'),
-  P2: require('@/assets/images/PCB/PCB-P2.png'),
-  MOIST: require('@/assets/images/PCB/PCB-MOIST.png'),
-  LED: require('@/assets/images/PCB/PCB-LED.png'),
-  AKTUATOR: require('@/assets/images/PCB/PCB-AKTUATOR.png'),
+const lightImages: Record<string, any> = {
+  USB1: require('@/assets/images/PCB/light/PCB-USB1.png'),
+  P1: require('@/assets/images/PCB/light/PCB-P1.png'),
+  U1: require('@/assets/images/PCB/light/PCB-U1.png'),
+  ENABLE: require('@/assets/images/PCB/light/PCB-ENABLE.png'),
+  BOOT: require('@/assets/images/PCB/light/PCB-BOOT.png'),
+  U3: require('@/assets/images/PCB/light/PCB-U3.png'),
+  I2C: require('@/assets/images/PCB/light/PCB-I2C.png'),
+  P2: require('@/assets/images/PCB/light/PCB-P2.png'),
+  MOIST: require('@/assets/images/PCB/light/PCB-MOIST.png'),
+  LED: require('@/assets/images/PCB/light/PCB-LED1.png'),
+  AKTUATOR: require('@/assets/images/PCB/light/PCB-AKTUATOR.png'),
+  default: require('@/assets/images/PCB/light/PCB.png'),
 };
+
+const darkImages: Record<string, any> = {
+  USB1: require('@/assets/images/PCB/dark/PCB-USB1.png'),
+  P1: require('@/assets/images/PCB/dark/PCB-P1.png'),
+  U1: require('@/assets/images/PCB/dark/PCB-U1.png'),
+  ENABLE: require('@/assets/images/PCB/dark/PCB-ENABLE.png'),
+  BOOT: require('@/assets/images/PCB/dark/PCB-BOOT.png'),
+  U3: require('@/assets/images/PCB/dark/PCB-U3.png'),
+  I2C: require('@/assets/images/PCB/dark/PCB-I2C.png'),
+  P2: require('@/assets/images/PCB/dark/PCB-P2.png'),
+  MOIST: require('@/assets/images/PCB/dark/PCB-MOIST.png'),
+  LED: require('@/assets/images/PCB/dark/PCB-LED1.png'),
+  AKTUATOR: require('@/assets/images/PCB/dark/PCB-AKTUATOR.png'),
+  default: require('@/assets/images/PCB/dark/PCB.png'),
+};
+
 
 const componentDescriptions: Record<string, string> = {
   USB1: "USB (tip C) konektor - preko njega lahko digivrt napajamo, uporabimo pa ga tudi za nalaganje kode.",
@@ -35,10 +53,13 @@ const componentDescriptions: Record<string, string> = {
   AKTUATOR: "AKTUATOR - sem lahko povežemo ventil ali črpalko, ki lahko rastlino avtomatsko zalije.",
 };
 
-const components = Object.keys(componentImages);
+const components = Object.keys(lightImages).filter(key => key !== 'default');
 
 export default function HomeTab() {
+  const { theme } = useAppTheme();
   const [selectedComponent, setSelectedComponent] = useState<string | null>(null);
+
+  const imageSet = theme === 'dark' ? darkImages : lightImages;
 
   return (
     <ThemedView style={styles.titleContainer}>
@@ -46,22 +67,21 @@ export default function HomeTab() {
         <ThemedText type="title">Komponente</ThemedText>
         <DigiVrtAnimation />
       </ThemedView>
-      
+
       <View style={styles.imageWrapper}>
         <Image
-          source={selectedComponent ? componentImages[selectedComponent] : require('@/assets/images/PCB/PCB-white.png')}
+          source={selectedComponent ? imageSet[selectedComponent] : imageSet.default}
           style={styles.image}
         />
       </View>
 
       <View style={styles.textContainer}>
         <ThemedText>
-          {selectedComponent 
+          {selectedComponent
             ? componentDescriptions[selectedComponent]
             : "Izberi komponento in spoznaj njeno nalogo."}
         </ThemedText>
       </View>
-
 
       <FlatList
         data={components}
@@ -72,7 +92,7 @@ export default function HomeTab() {
         renderItem={({ item }) => (
           <Pressable
             style={[styles.componentBox, selectedComponent === item && styles.selectedBox]}
-            onPress={() => setSelectedComponent(item as string)}
+            onPress={() => setSelectedComponent(item)}
           >
             <ThemedText>{item}</ThemedText>
           </Pressable>
@@ -124,8 +144,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   image: {
-    width: 300,
-    height: 300,
+    width: screenWidth - 32,
+    height: screenWidth - 32,
     resizeMode: 'contain',
   },
   textContainer: {

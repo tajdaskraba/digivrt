@@ -1,11 +1,12 @@
-import { StyleSheet, TextInput, Alert, TouchableOpacity, ScrollView, Modal, View } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
+import { Dimensions, StyleSheet, TextInput, TouchableOpacity, ScrollView, Modal, View } from 'react-native';
 import { useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { IconSymbol } from '@/components/ui/IconSymbol';
-import { Image } from "@/components/ui/image";
 import { HStack } from '@/components/ui/hstack';
+
+const screenWidth = Dimensions.get('window').width;
+const backgroundColor = '#000';
 
 interface AddPlantFormProps {
   visible: boolean;
@@ -15,7 +16,6 @@ interface AddPlantFormProps {
 export default function AddPlantForm({ visible, onClose }: AddPlantFormProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState('Moja rastlina');
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const handleTitlePress = () => {
     setIsEditing(true);
@@ -54,9 +54,6 @@ export default function AddPlantForm({ visible, onClose }: AddPlantFormProps) {
                     {title}
                   </ThemedText>
               )}
-              {selectedImage && (
-                  <Image source={{ uri: selectedImage }} alt="Plant Image" style={styles.image} />
-              )}
             </HStack>
           </ThemedView>
         </ScrollView>
@@ -82,21 +79,16 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     backgroundColor: '#000',
-    flexDirection: 'row',
-    gap: 8,
-    paddingHorizontal: 32,
+    width: screenWidth - 32,   
+    marginHorizontal: 16,
+    paddingHorizontal: 16,
     paddingVertical: 16,
     borderWidth: 1,
     borderColor: '#fff',
+    borderRadius: 8,
   },
   titleInput: {
     fontSize: 32,
     fontWeight: '700',
-    color: '#fff',
-  },
-  image: {
-    width: 50,
-    height: 50,
-    borderRadius: 8,
   },
 });
