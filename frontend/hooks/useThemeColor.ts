@@ -1,8 +1,3 @@
-/**
- * Learn more about light and dark modes:
- * https://docs.expo.dev/guides/color-schemes/
- */
-
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from 'react-native';
 
@@ -13,9 +8,10 @@ export function useThemeColor(
   const theme = useColorScheme() ?? 'light';
   const colorFromProps = props[theme];
 
-  if (colorFromProps) {
-    return colorFromProps;
-  } else {
-    return Colors[theme][colorName];
-  }
+  if (colorFromProps) return colorFromProps;
+
+  const color = Colors[theme][colorName];
+  const resolvedColor = typeof color === 'string' ? color : color?.[500];
+  
+  return resolvedColor ?? (theme === 'dark' ? Colors.dark.gray[200] : Colors.light.gray[200]);
 }
