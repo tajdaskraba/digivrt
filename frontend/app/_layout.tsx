@@ -19,7 +19,7 @@ function LayoutContent() {
     <GluestackUIProvider mode={theme}>
       <NavigationThemeProvider value={theme === 'dark' ? DarkTheme : DefaultTheme}>
         <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="(navigation)" options={{ headerShown: false }} />
           <Stack.Screen name="+not-found" />
         </Stack>
         <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
